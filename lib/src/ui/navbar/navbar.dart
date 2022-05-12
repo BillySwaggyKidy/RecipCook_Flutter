@@ -25,9 +25,9 @@ class _NavBar extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("BottomNavigationBar Example"),
-        ),
+        floatingActionButton:
+            FloatingActionButton(onPressed: () => {}, child: Text("test")),
+        floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
         body: this.getBody(),
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
