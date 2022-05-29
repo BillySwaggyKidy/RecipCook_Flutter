@@ -1,1 +1,1 @@
-export 'navbar/navbar.dart';
+export 'navbar_context/navbar_context.dart';

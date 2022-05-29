@@ -1,0 +1,326 @@
+[
+    {
+        "type" : "select",
+        "required" : true,
+        "data" : {
+            "label" : "Cuisine",
+            "items" : [
+                {
+                    "label":"None",
+                    "value":"None"
+                },
+                {
+                    "label":"African",
+                    "value":"African"
+                },
+                {
+                    "label":"American",
+                    "value":"American"
+                },
+                {
+                    "label":"British",
+                    "value":"British"
+                },
+                {
+                    "label":"Cajun",
+                    "value":"Cajun"
+                },
+                {
+                    "label":"Caribbean",
+                    "value":"Caribbean"
+                },
+                {
+                    "label":"Chiness",
+                    "value":"Chiness"
+                },
+                {
+                    "label":"Eastern Europe",
+                    "value":"Eastern Europe"
+                },
+                {
+                    "label":"European",
+                    "value":"European"
+                },
+                {
+                    "label":"French",
+                    "value":"French"
+                },
+                {
+                    "label":"German",
+                    "value":"German"
+                },
+                {
+                    "label":"Greek",
+                    "value":"Greek"
+                },
+                {
+                    "label":"Indian",
+                    "value":"Indian"
+                },
+                {
+                    "label":"Irish",
+                    "value":"Irish"
+                },
+                {
+                    "label":"Italian",
+                    "value":"Italian"
+                },
+                {
+                    "label":"Japanese",
+                    "value":"Japanese"
+                },
+                {
+                    "label":"Jewish",
+                    "value":"Jewish"
+                },
+                {
+                    "label":"Korean",
+                    "value":"Korean"
+                },
+                {
+                    "label":"Latin American",
+                    "value":"Latin American"
+                },
+                {
+                    "label":"Mediterranean",
+                    "value":"Mediterranean"
+                },
+                {
+                    "label":"Mexican",
+                    "value":"Mexican"
+                },
+                {
+                    "label":"Middle Eastern",
+                    "value":"Middle Eastern"
+                },
+                {
+                    "label":"Nordic",
+                    "value":"Nordic"
+                },
+                {
+                    "label":"Southern",
+                    "value":"Southern"
+                },
+                {
+                    "label":"Spanish",
+                    "value":"Spanish"
+                },
+                {
+                    "label":"Thai",
+                    "value":"Thai"
+                },
+                {
+                    "label":"Vietnamese",
+                    "value":"Vietnamese"
+                }
+                
+            ]
+        }
+    },
+    {
+        "type" : "select",
+        "required" : true,
+        "data" : {
+            "label" : "Diet",
+            "items" : [
+                {
+                    "label":"None",
+                    "value":"None"
+                },
+                {
+                    "label":"Gluten Free",
+                    "value":"Gluten Free"
+                },
+                {
+                    "label":"Ketogenic",
+                    "value":"Ketogenic"
+                },
+                {
+                    "label":"Vegetarian",
+                    "value":"Vegetarian"
+                },
+                {
+                    "label":"Lacto-Vegetarian",
+                    "value":"Lacto-Vegetarian"
+                },
+                {
+                    "label":"Ovo-Vegetarian",
+                    "value":"Ovo-Vegetarian"
+                },
+                {
+                    "label":"Vegan",
+                    "value":"Vegan"
+                },
+                {
+                    "label":"Pescetarian",
+                    "value":"Pescetarian"
+                },
+                {
+                    "label":"Paleo",
+                    "value":"Paleo"
+                },
+                {
+                    "label":"Primal",
+                    "value":"Primal"
+                },
+                {
+                    "label":"Low FODMAP",
+                    "value":"Low FODMAP"
+                },
+                {
+                    "label":"Whole30",
+                    "value":"Whole30"
+                }
+            ]
+        }
+    },
+    {
+        "type" : "select",
+        "required" : true,
+        "data" : {
+            "label" : "Intolerances",
+            "items" : [
+                {
+                    "label":"None",
+                    "value":"None"
+                },
+                {
+                    "label":"Dairy",
+                    "value":"Dairy"
+                },
+                {
+                    "label":"Egg",
+                    "value":"Egg"
+                },
+                {
+                    "label":"Gluten",
+                    "value":"Gluten"
+                },
+                {
+                    "label":"Grain",
+                    "value":"Grain"
+                },
+                {
+                    "label":"Peanut",
+                    "value":"Peanut"
+                },
+                {
+                    "label":"Seafood",
+                    "value":"Seafood"
+                },
+                {
+                    "label":"Sesame",
+                    "value":"Sesame"
+                },
+                {
+                    "label":"Shellfish",
+                    "value":"Shellfish"
+                },
+                {
+                    "label":"Soy",
+                    "value":"Soy"
+                },
+                {
+                    "label":"Sulfite",
+                    "value":"Sulfite"
+                },
+                {
+                    "label":"Tree Nut",
+                    "value":"Tree Nut"
+                },
+                {
+                    "label":"Wheat",
+                    "value":"Wheat"
+                }
+            ]
+        }
+    },
+    {
+        "type" : "text",
+        "required" : false,
+        "data" : {
+            "label" : "Equipment",
+            "value" : ""
+        }
+    },
+    {
+        "type" : "select",
+        "required" : true,
+        "data" : {
+            "label" : "Type",
+            "items" : [
+                {
+                    "label":"None",
+                    "value":"None"
+                },
+                {
+                    "label":"main course",
+                    "value":"main course"
+                },
+                {
+                    "label":"side dish",
+                    "value":"side dish"
+                },
+                {
+                    "label":"dessert",
+                    "value":"dessert"
+                },
+                {
+                    "label":"appetizer",
+                    "value":"appetizer"
+                },
+                {
+                    "label":"salad",
+                    "value":"salad"
+                },
+                {
+                    "label":"bread",
+                    "value":"bread"
+                },
+                {
+                    "label":"breakfast",
+                    "value":"breakfast"
+                },
+                {
+                    "label":"soup",
+                    "value":"soup"
+                },
+                {
+                    "label":"beverage",
+                    "value":"beverage"
+                },
+                {
+                    "label":"sauce",
+                    "value":"sauce"
+                },
+                {
+                    "label":"marinade",
+                    "value":"marinade"
+                },
+                {
+                    "label":"fingerfood",
+                    "value":"fingerfood"
+                },
+                {
+                    "label":"snack",
+                    "value":"snack"
+                },
+                {
+                    "label":"drink",
+                    "value":"drink"
+                }
+            ]
+        }
+    },
+    {
+        "type" : "text",
+        "required" : false,
+        "data" : {
+            "label" : "Author",
+            "value" : ""
+        }
+    }
+
+
+
+]

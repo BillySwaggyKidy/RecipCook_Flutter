@@ -9,7 +9,7 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
       home: Scaffold(
-        body: NavBar(key: null),
+        body: NavbarContext(key: null),
       ),
     );
   }
