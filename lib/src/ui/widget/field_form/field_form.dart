@@ -18,13 +18,15 @@ class FieldForm extends StatefulWidget {
   String type = "";
   bool required;
   dynamic data;
+  String value;
   late FieldFormController controller = FieldFormController(data["label"]);
 
   FieldForm(
       {Key? key,
       required this.type,
       required this.required,
-      required this.data})
+      required this.data,
+      required this.value})
       : super(key: key);
 
   @override
@@ -53,6 +55,7 @@ class _FieldForm extends State<FieldForm> {
                 String type = widget.type;
                 if (type == "select") {
                   field = SelectField(
+                    value: widget.value,
                     label: widget.data["label"],
                     items: widget.data["items"],
                     required: widget.required,
@@ -64,7 +67,7 @@ class _FieldForm extends State<FieldForm> {
                         filled: true,
                         fillColor: Color.fromARGB(170, 93, 180, 100),
                         errorStyle: TextStyle(height: 0.6)),
-                    initialValue: widget.data["value"],
+                    initialValue: widget.value,
                     validator: (value) {
                       if (widget.required && (value == null || value.isEmpty)) {
                         return 'Please enter some text';

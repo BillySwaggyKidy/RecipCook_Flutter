@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipcook/src/models/item_recipe_model/recipe/recipe.dart';
-import 'package:recipcook/src/ui/navbar_context/inherited_navbar/inherited_navbar.dart';
+import 'package:recipcook/src/ui/navigator_and_context/inherited_navbar/inherited_navbar.dart';
 import './card_content_title/card_content_title.dart';
 import './card_content_body/card_content_body.dart';
 import './card_content_favorite/card_content_favorite.dart';

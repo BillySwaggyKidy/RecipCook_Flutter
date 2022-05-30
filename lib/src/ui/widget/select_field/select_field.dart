@@ -6,23 +6,28 @@ class SelectField extends StatefulWidget {
   List<dynamic> items = [];
   FieldFormController controller;
   bool required;
+  String value;
 
   SelectField(
       {Key? key,
       required this.label,
       required this.items,
       required this.controller,
-      required this.required})
+      required this.required,
+      required this.value})
       : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return _SelectField();
+    return _SelectField(dropdownValue: value);
   }
 }
 
 class _SelectField extends State<SelectField> {
-  String dropdownValue = "None";
+  String dropdownValue;
+
+  _SelectField({required this.dropdownValue});
+
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<String>(

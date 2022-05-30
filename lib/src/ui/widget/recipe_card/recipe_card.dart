@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:recipcook/src/blocs/all_blocs.dart';
 import 'package:recipcook/src/models/item_recipe_model/recipe/recipe.dart';
-import 'package:recipcook/src/ui/navbar_context/navbar/tab3/favorite.dart';
 import 'card_content_and_image/card_content_and_image.dart';
 
 class RecipeCard extends StatelessWidget {
@@ -26,7 +27,10 @@ class RecipeCard extends StatelessWidget {
     return Padding(
         padding: const EdgeInsets.all(16.0),
         child: InkWell(
-          onTap: () => {},
+          onTap: () => {
+            BlocProvider.of<NavigatorPageBloc>(context).add(
+                NavigateToPageEvent(page: CurrentPage.recipeView, data: recipe))
+          },
           child: Container(
               padding: const EdgeInsets.all(5.0),
               width: cardWidth,

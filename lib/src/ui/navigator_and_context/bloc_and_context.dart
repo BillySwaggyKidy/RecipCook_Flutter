@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipcook/src/blocs/all_blocs.dart';
 import 'inherited_navbar/inherited_navbar.dart';
-import 'navbar/navbar.dart';
+import './navigator_page/navigator.dart';
 
-class NavbarContext extends StatelessWidget {
-  NavbarContext({required Key? key}) : super(key: key);
+class BlocAndContext extends StatelessWidget {
+  BlocAndContext({required Key? key}) : super(key: key);
 
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -18,9 +18,15 @@ class NavbarContext extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => FavoriteBloc(),
+        ),
+        BlocProvider(
+          create: (context) => NavigatorPageBloc(),
+        ),
+        BlocProvider(
+          create: (context) => RecipeInstructionsBloc(),
         )
       ],
-      child: InheritedNavbar(child: NavBar(key: key)),
+      child: InheritedNavbar(child: NavigatorPage(key: key)),
     );
   }
 }

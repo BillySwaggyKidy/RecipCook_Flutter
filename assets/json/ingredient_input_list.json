@@ -4,6 +4,7 @@
         "required" : true,
         "data" : {
             "label" : "Cuisine",
+            "value" : "None",
             "items" : [
                 {
                     "label":"None",
@@ -122,6 +123,7 @@
         "required" : true,
         "data" : {
             "label" : "Diet",
+            "value" : "None",
             "items" : [
                 {
                     "label":"None",
@@ -179,6 +181,7 @@
         "required" : true,
         "data" : {
             "label" : "Intolerances",
+            "value" : "None",
             "items" : [
                 {
                     "label":"None",
@@ -248,6 +251,7 @@
         "required" : true,
         "data" : {
             "label" : "Type",
+            "value" : "None",
             "items" : [
                 {
                     "label":"None",

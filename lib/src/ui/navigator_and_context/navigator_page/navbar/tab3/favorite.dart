@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:recipcook/src/blocs/status.dart';
-import 'package:recipcook/src/ui/widget/recipe_card/recipe_card.dart';
-import 'package:recipcook/src/ui/widget/tab_title/tab_title.dart';
-import 'package:recipcook/src/blocs/recipe_items/recipe_items_bloc.dart';
-import 'package:recipcook/src/ui/navbar_context/inherited_navbar/inherited_navbar.dart';
 
-class RecipeList extends StatefulWidget {
-  const RecipeList({required Key? key}) : super(key: key);
+import 'package:recipcook/src/blocs/status.dart';
+import 'package:recipcook/src/ui/navigator_and_context/inherited_navbar/inherited_navbar.dart';
+import 'package:recipcook/src/ui/widget/tab_title/tab_title.dart';
+import 'package:recipcook/src/blocs/favorite/favorite_bloc.dart';
+import 'package:recipcook/src/ui/widget/recipe_card/recipe_card.dart';
+
+class Favorite extends StatefulWidget {
+  Favorite({required Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return _RecipeList();
+    return _Favorite();
   }
 }
 
-class _RecipeList extends State {
+class _Favorite extends State {
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -25,7 +26,7 @@ class _RecipeList extends State {
         Container(
           decoration: const BoxDecoration(
               image: DecorationImage(
-            image: AssetImage('img/tab2-background.png'),
+            image: AssetImage('img/tab3-background.png'),
             fit: BoxFit.fill,
             alignment: FractionalOffset.topCenter,
           )),
@@ -34,25 +35,25 @@ class _RecipeList extends State {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            TabTitle(title: "Recipes"),
+            TabTitle(title: "Favorites"),
             const SizedBox(height: 15),
             Flexible(
-              child: BlocBuilder<RecipeItemsBloc, RecipeItemsState>(
+              child: BlocBuilder<FavoriteBloc, FavoriteState>(
                 builder: (context, state) {
                   if (state.status == Status.loading) {
                     return const CircularProgressIndicator();
                   } else if (state.status == Status.success) {
-                    InheritedNavbar.of(context).recipeList =
-                        state.recipes!.recipes;
+                    InheritedNavbar.of(context).favoriteRecipeList =
+                        state.favoriteRecipeList!;
                     return ListView.builder(
                       scrollDirection: Axis.vertical,
                       shrinkWrap: true,
-                      itemCount: state.recipes?.recipes.length,
+                      itemCount: state.favoriteRecipeList?.length,
                       itemBuilder: (context, index) => RecipeCard(
-                        favoriteEnabled: true,
+                        favoriteEnabled: false,
                         index: index,
-                        recipe: state.recipes!.recipes[index],
-                        colorBackground: const Color.fromRGBO(93, 180, 63, 1),
+                        recipe: state.favoriteRecipeList![index],
+                        colorBackground: const Color.fromRGBO(154, 119, 28, 1),
                       ),
                     );
                   } else {

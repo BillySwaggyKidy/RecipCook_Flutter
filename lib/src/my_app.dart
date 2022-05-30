@@ -4,12 +4,11 @@ import 'ui/ui.dart';
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
       home: Scaffold(
-        body: NavbarContext(key: null),
+        body: BlocAndContext(key: null),
       ),
     );
   }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:recipcook/src/blocs/navbar/navbar_bloc.dart';
 import 'tab1/ingredient.dart';
 import 'tab2/recipe_list.dart';
 import 'tab3/favorite.dart';
-import '../../../blocs/navbar/navbar_bloc.dart';
 
 class NavBar extends StatefulWidget {
   NavBar({required Key? key}) : super(key: key);
