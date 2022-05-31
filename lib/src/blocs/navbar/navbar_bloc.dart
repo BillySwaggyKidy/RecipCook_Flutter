@@ -14,6 +14,7 @@ class NavbarBloc extends Bloc<NavbarEvent, NavbarState> {
   }
 
   void _changeTabIndex(NavbarEvent event, Emitter<NavbarState> emit) async {
-    emit(state.copyWith(index: event.tabIndex));
+    state.tabIndex = event.tabIndex;
+    emit(state.copyWith(index: state.tabIndex));
   }
 }

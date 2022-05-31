@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 part 'navigator_page_state.dart';
 
-enum CurrentPage { home, signup, login, navbar, recipeView }
+enum CurrentPage { home, register, login, navbar, recipeView }
 
 class NavigateToPageEvent {
   final CurrentPage page;
