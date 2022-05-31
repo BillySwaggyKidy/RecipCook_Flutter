@@ -28,8 +28,10 @@ class RecipeCard extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: InkWell(
           onTap: () => {
-            BlocProvider.of<NavigatorPageBloc>(context).add(
-                NavigateToPageEvent(page: CurrentPage.recipeView, data: recipe))
+            BlocProvider.of<NavigatorPageBloc>(context).add(NavigateToPageEvent(
+                page: CurrentPage.recipeView, data: recipe)),
+            BlocProvider.of<RecipeInstructionsBloc>(context)
+                .add(InitiateIntructions(startIndex: 0))
           },
           child: Container(
               padding: const EdgeInsets.all(5.0),

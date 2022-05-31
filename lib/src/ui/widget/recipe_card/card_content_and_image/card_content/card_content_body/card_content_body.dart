@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CardContentBody extends StatelessWidget {
-  String servings;
+  String aggregateLikes;
   String healthScore;
 
-  CardContentBody({required this.servings, required this.healthScore});
+  CardContentBody({required this.aggregateLikes, required this.healthScore});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class CardContentBody extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-          Text("Servings: " + servings),
+          Text("Likes: " + aggregateLikes),
           Text("Health score: " + healthScore)
         ]));
   }

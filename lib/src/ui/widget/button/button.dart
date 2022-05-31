@@ -5,12 +5,14 @@ class Button extends StatelessWidget {
   double width;
   double height;
   Color color;
+  dynamic onPressed;
 
   Button(
       {required this.text,
       required this.width,
       required this.height,
-      required this.color});
+      required this.color,
+      required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,9 @@ class Button extends StatelessWidget {
       minWidth: width,
       height: height,
       child: ElevatedButton(
-        onPressed: () {},
+        style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(color)),
+        onPressed: onPressed,
         child: Text(text),
       ),
     );

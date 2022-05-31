@@ -1,18 +1,18 @@
 class InstructionObject {
-  int? _id = 0;
-  String? _name = "";
-  String? _localizedName = "";
-  String? _image = "";
+  int _id = 0;
+  String _name = "";
+  String _localizedName = "";
+  String _image = "";
 
-  InstructionObject(ingredient) {
-    _id = ingredient["id"];
-    _name = ingredient["name"];
-    _localizedName = ingredient["localizedName"];
-    _image = ingredient["image"];
+  InstructionObject(object) {
+    _id = object["id"] ?? 0;
+    _name = object["name"] ?? "";
+    _localizedName = object["localizedName"] ?? "";
+    _image = object["image"] ?? "default.jpg";
   }
 
-  int? get id => _id;
-  String? get name => _name;
-  String? get localizedName => _localizedName;
-  String? get image => _image;
+  int get id => _id;
+  String get name => _name;
+  String get localizedName => _localizedName;
+  String get image => _image;
 }

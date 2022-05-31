@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:recipcook/src/ui/widget/tab_title/tab_title.dart';
 import 'ingredient_input_list/ingredient_form.dart';
 
-class Ingredient extends StatefulWidget {
-  Ingredient({required Key? key}) : super(key: key);
+class IngredientView extends StatefulWidget {
+  IngredientView({required Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {

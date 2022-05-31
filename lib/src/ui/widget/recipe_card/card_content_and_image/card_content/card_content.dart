@@ -17,9 +17,9 @@ class CardContent extends StatelessWidget {
         child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CardContentTitle(title: recipe.title!),
+        CardContentTitle(title: recipe.title),
         CardContentBody(
-            servings: recipe.servings.toString(),
+            aggregateLikes: recipe.aggregateLikes.toString(),
             healthScore: recipe.healthScore.toString()),
         if (favoriteEnabled)
           CardContentFavorite(

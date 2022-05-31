@@ -6,7 +6,7 @@ import '../auth/secret.dart' as secret;
 
 class RecipeApiProvider {
   Client client = Client();
-  final _apiKey = secret.apiKey;
+  final _apiKey = secret.apiKey2;
 
   Future<RecipeItemModel> fetchRecipeList(Map parameters) async {
     String requestUrl =

@@ -7,8 +7,8 @@ class RecipeInstructionsBloc
   RecipeInstructionsBloc()
       : super(RecipeInstructionsState(instructionIndex: 0)) {
     on<InitiateIntructions>(_initiateInstructions);
-    on<InitiateIntructions>(_moveToNextInstruction);
-    on<InitiateIntructions>(_moveToPreviousInstruction);
+    on<PreviousInstruction>(_moveToPreviousInstruction);
+    on<NextInstruction>(_moveToNextInstruction);
   }
 
   void _initiateInstructions(RecipeInstructionsEvent event,
@@ -17,15 +17,15 @@ class RecipeInstructionsBloc
     emit(state.copyWith(index: state.instructionIndex));
   }
 
-  void _moveToNextInstruction(RecipeInstructionsEvent event,
-      Emitter<RecipeInstructionsState> emit) async {
-    state.instructionIndex += 1;
-    emit(state.copyWith(index: state.instructionIndex));
-  }
-
   void _moveToPreviousInstruction(RecipeInstructionsEvent event,
       Emitter<RecipeInstructionsState> emit) async {
     state.instructionIndex -= 1;
+    emit(state.copyWith(index: state.instructionIndex));
+  }
+
+  void _moveToNextInstruction(RecipeInstructionsEvent event,
+      Emitter<RecipeInstructionsState> emit) async {
+    state.instructionIndex += 1;
     emit(state.copyWith(index: state.instructionIndex));
   }
 }

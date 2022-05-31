@@ -89,7 +89,7 @@ class _IngredientForm extends State<IngredientForm> {
                       Map.fromEntries(fieldMapEntryList);
                   Map fieldData = Map.fromEntries(fieldMapEntryList.where(
                       (field) =>
-                          field.value.isNotEmpty || field.value != "None"));
+                          field.value.isNotEmpty && field.value != "None"));
                   BlocProvider.of<NavbarBloc>(context)
                       .add(NavbarEvent(tabIndex: 1));
                   BlocProvider.of<RecipeItemsBloc>(context)

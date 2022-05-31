@@ -16,7 +16,7 @@ class CardContentAndImage extends StatelessWidget {
         CardImage(
           imageWidth: 100,
           imageHeight: 150,
-          imageUrl: recipe.image!,
+          imageUrl: recipe.image,
         ),
       ],
     );
