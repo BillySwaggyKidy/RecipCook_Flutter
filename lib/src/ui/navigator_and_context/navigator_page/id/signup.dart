@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:recipcook/src/blocs/navigator_page/navigator_page_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mongo_dart/mongo_dart.dart' as mongo;
+import 'package:recipcook/src/models/item_login_model/login_item_model.dart';
+import 'package:recipcook/src/ui/navigator_and_context/inherited_navbar/inherited_navbar.dart';
 
 class LoginDemo extends StatefulWidget {
   @override
@@ -175,11 +177,14 @@ class _LoginDemoState extends State<LoginDemo> {
       check = 0;
     }
 
-    res.first['name'];
-    res.first['email'];
-    res.first['password'];
-    res.first['cpass'];
+    String pname = res.first['name'];
+    String pemail = res.first['email'];
+    String ppwd = res.first['password'];
+    String pcpass = res.first['cpass'];
     
+    LoginItemModel profil = LoginItemModel(name: pname, photo: "", email: pemail, password: ppwd, cpass: pcpass);
+    InheritedNavbar.of(context).profil = profil;
+
 
     await cleanupDatabase();
   }
