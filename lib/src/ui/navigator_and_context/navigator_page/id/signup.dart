@@ -15,6 +15,7 @@ class _LoginDemoState extends State<LoginDemo> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Stack(alignment: Alignment.center, children: <Widget>[
       Container(
         decoration: const BoxDecoration(
@@ -45,6 +46,24 @@ class _LoginDemoState extends State<LoginDemo> {
                   ),
               ),
             ),
+            const Text(
+              'Login',
+              textAlign: TextAlign.left,
+              textDirection: TextDirection.ltr,
+              style: TextStyle(
+                color: Color.fromARGB(255, 0, 0, 0),
+                fontSize: 25,
+              ),
+            ),
+            const Text(
+              'Sign to your account',
+              textAlign: TextAlign.left,
+              textDirection: TextDirection.ltr,
+              style: TextStyle(
+                color: Color.fromARGB(255, 0, 0, 0),
+              ),
+            ),
+            SizedBox(height: size.height * 0.03),
             Padding(
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
               padding: const EdgeInsets.symmetric(horizontal: 15),

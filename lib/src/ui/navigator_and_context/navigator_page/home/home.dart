@@ -87,7 +87,7 @@ class Padding extends StatelessWidget {
 void connectData() async {
   //var db = Db(defaultUri);
   //var db = await mongo.Db.create("mongodb+srv://test:test@cluster0.yhi0oy3.mongodb.net/Profile");
-  var db = await mongo.Db.create("mongodb+srv://userRoot:YRotVYGAQp465r0b@cluster0.yhi0oy3.mongodb.net/?retryWrites=true&w=majority");
+  var db = await mongo.Db.create("mongodb+srv://userRoot:YRotVYGAQp465r0b@cluster0.yhi0oy3.mongodb.net/Profile");
   await db.open();
   print("****************success ---------------------------------");
   await db.close();

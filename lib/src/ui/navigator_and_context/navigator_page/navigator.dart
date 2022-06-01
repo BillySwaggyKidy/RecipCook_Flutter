@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipcook/src/blocs/all_blocs.dart';
 import 'package:recipcook/src/ui/navigator_and_context/navigator_page/home/home.dart';
+import 'package:recipcook/src/ui/navigator_and_context/navigator_page/id/auth.dart';
 import 'package:recipcook/src/ui/navigator_and_context/navigator_page/id/login.dart';
 import 'package:recipcook/src/ui/navigator_and_context/navigator_page/id/register.dart';
 import 'package:recipcook/src/ui/navigator_and_context/navigator_page/id/signup.dart';
@@ -23,7 +24,8 @@ class NavigatorPage extends StatelessWidget {
           case CurrentPage.home:
             return const HomePage();
           case CurrentPage.register:
-            return RegisterScreen();
+            //return RegisterScreen();
+            return AuthView();
           case CurrentPage.login:
             // return Loginn();
             return LoginDemo();
