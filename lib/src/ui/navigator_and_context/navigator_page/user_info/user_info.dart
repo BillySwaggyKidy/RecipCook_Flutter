@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipcook/src/blocs/navigator_page/navigator_page_bloc.dart';
+import 'package:recipcook/src/models/item_login_model/login_item_model.dart';
 
 class UserInfo extends StatelessWidget {
-  UserInfo();
+  LoginItemModel profil;
+  UserInfo({required this.profil});
 
   final _formKey = GlobalKey<FormState>();
   TextEditingController nameController = TextEditingController();
@@ -13,6 +15,10 @@ class UserInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    nameController.text = profil.getName;
+    emailController.text = profil.getEmail;
+    passwordController.text = profil.getPassword;
+    verifyPasswordController.text = profil.getCpass;
     return Scaffold(
         backgroundColor: const Color.fromARGB(255, 136, 199, 120),
         body: Center(
@@ -57,7 +63,6 @@ class UserInfo extends StatelessWidget {
                                 val!.isEmpty ? 'Name Cannot be Empty' : null,
                             decoration:
                                 const InputDecoration(labelText: "Name"),
-                            obscureText: true,
                           ),
                         ),
                         Container(
@@ -70,7 +75,6 @@ class UserInfo extends StatelessWidget {
                                 val!.isEmpty ? 'Email Cannot be Empty' : null,
                             decoration:
                                 const InputDecoration(labelText: "Email"),
-                            obscureText: true,
                           ),
                         ),
                         Container(

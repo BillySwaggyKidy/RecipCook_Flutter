@@ -15,7 +15,7 @@ class NavigatorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     BlocProvider.of<NavigatorPageBloc>(context)
-        .add(NavigateToPageEvent(page: CurrentPage.home));
+        .add(NavigateToPageEvent(page: CurrentPage.navbar));
     return BlocBuilder<NavigatorPageBloc, NavigatorPageState>(
       builder: (context, state) {
         switch (state.currentPage) {
@@ -32,7 +32,9 @@ class NavigatorPage extends StatelessWidget {
           case CurrentPage.recipeView:
             return RecipeView(recipe: state.data);
           case CurrentPage.userInfo:
-            return UserInfo();
+            return UserInfo(
+              profil: state.data,
+            );
           default:
             return const Text("Default");
         }

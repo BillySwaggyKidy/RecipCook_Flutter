@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipcook/src/blocs/navigator_page/navigator_page_bloc.dart';
+import 'package:recipcook/src/ui/navigator_and_context/inherited_navbar/inherited_navbar.dart';
 
 class DrawerUser extends StatelessWidget {
   DrawerUser();
@@ -15,9 +16,9 @@ class DrawerUser extends StatelessWidget {
           backgroundColor: Colors.grey,
           radius: 40,
         ),
-        const Text(
-          "User info",
-          style: TextStyle(fontSize: 20, color: Colors.black),
+        Text(
+          InheritedNavbar.of(context).profil!.getName,
+          style: const TextStyle(fontSize: 20, color: Colors.black),
         ),
         ElevatedButton(
           style: ButtonStyle(
@@ -26,8 +27,9 @@ class DrawerUser extends StatelessWidget {
               backgroundColor: MaterialStateProperty.all<Color>(
                   const Color.fromRGBO(0, 0, 0, 0))),
           onPressed: () {
-            BlocProvider.of<NavigatorPageBloc>(context)
-                .add(NavigateToPageEvent(page: CurrentPage.userInfo));
+            BlocProvider.of<NavigatorPageBloc>(context).add(NavigateToPageEvent(
+                page: CurrentPage.userInfo,
+                data: InheritedNavbar.of(context).profil));
           },
           child: const Text("Edit",
               style: TextStyle(
@@ -40,7 +42,11 @@ class DrawerUser extends StatelessWidget {
           style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all<Color>(
                   const Color.fromRGBO(255, 0, 0, 0.8))),
-          onPressed: () {},
+          onPressed: () {
+            InheritedNavbar.of(context).profil = null;
+            BlocProvider.of<NavigatorPageBloc>(context)
+                .add(NavigateToPageEvent(page: CurrentPage.login));
+          },
           child: const Text("Disconnect",
               style: TextStyle(fontSize: 20, color: Colors.black)),
         ),

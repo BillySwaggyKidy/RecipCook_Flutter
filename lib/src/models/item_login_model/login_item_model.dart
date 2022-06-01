@@ -7,13 +7,12 @@ class LoginItemModel {
   String password;
   String cpass;
 
-  LoginItemModel({
-    required this.name,
-    required this.photo,
-    required this.email,
-    required this.password,
-    required this.cpass
-  });
+  LoginItemModel(
+      {required this.name,
+      required this.photo,
+      required this.email,
+      required this.password,
+      required this.cpass});
 
   LoginItemModel.fromJson(Map<String, dynamic> json)
       : email = json['email'],
@@ -31,6 +30,12 @@ class LoginItemModel {
       'cpass': cpass,
     };
   }
+
+  String get getName => name;
+  String get getPhoto => photo;
+  String get getEmail => email;
+  String get getPassword => password;
+  String get getCpass => cpass;
 
   // String showProfile() {
   //   return "$email\n$name\n$password\n$cpass\n\n";

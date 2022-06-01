@@ -1,46 +1,20 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-const app = express();
-const path = require("path");
-const Profile = require("./models/profile.model");
+const express = require('express')
+const auth = require('./router/router_auth');
+const login = require('./router/router_login');
+const update = require('./router/router_update');
+const app = express()
+const port = 3000
 
-app.use(cors());
-mongoose.set("debug", true);
-mongoose
-  .connect(
-    //"mongodb+srv://root:pass@birthdayapp.peklc.mongodb.net/BirthdayApp?retryWrites=true&w=majority",
-    "mongodb+srv://userRoot:YRotVYGAQp465r0b@cluster0.yhi0oy3.mongodb.net/?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    }
-  )
-  .then(() => console.log("connexion ok !"));
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
-app.use(express.static(path.join(__dirname, "public")));
-app.use(express.json());
+app.get('/auth',auth.router_auth);
 
+app.post('/login',login.router_login);
 
-app.get("/api/profiles", async (req, res) => {
-  try {
-    const profiles = await Profile.find({}).exec();
-    res.json(profiles);
-  } catch (e) {
-    res.status(500).json(e);
-  }
-});
+app.post('/update',update.router_update);
 
-/*app.post("/api/profiles", async (req, res) => {
-  try {
-    const body = req.body;
-    const profile = await new Profile(body).save();
-    res.json(trip);
-  } catch (e) {
-    res.status(500).json(e);
-  }
-});*/
-
-
-
-app.listen(80);
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
