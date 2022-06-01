@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:recipcook/src/blocs/navigator_page/navigator_page_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mongo_dart/mongo_dart.dart' as mongo;
 
 class LoginDemo extends StatefulWidget {
   @override
@@ -12,6 +13,7 @@ class _LoginDemoState extends State<LoginDemo> {
   final _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  var check = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -141,10 +143,22 @@ class _LoginDemoState extends State<LoginDemo> {
         alignment: FractionalOffset.bottomCenter,
         child: TextButton(
           onPressed: () {
+            var email = emailController.text;
+            var password = passwordController.text;
+            verifData(email, password);
             print(emailController);
             print(passwordController);
-            BlocProvider.of<NavigatorPageBloc>(context)
-              .add(NavigateToPageEvent(page: CurrentPage.navbar));
+            if(check==0)
+            {
+              BlocProvider.of<NavigatorPageBloc>(context)
+                .add(NavigateToPageEvent(page: CurrentPage.login));
+            }
+            else if (check==1)
+            {
+              BlocProvider.of<NavigatorPageBloc>(context)
+                .add(NavigateToPageEvent(page: CurrentPage.navbar));
+            }
+            
           },
           child: const Text(
             'LOGIN',
@@ -159,5 +173,38 @@ class _LoginDemoState extends State<LoginDemo> {
         ),
       ),
     ]);
+  }
+
+  void verifData(String email, String password) async {
+    var db = await mongo.Db.create("mongodb+srv://test:test@cluster0.yhi0oy3.mongodb.net/Profile");
+    await db.open();
+    print("****************success login ---------------------------------");
+    Future cleanupDatabase() async {
+      await db.close();
+    }
+
+    if (!db.masterConnection.serverCapabilities.supportsOpMsg) {
+      return;
+    }
+
+    var collectionName = 'insertOne';
+    //await db.dropCollection(collectionName);
+    var collection = db.collection(collectionName);
+
+    var res = await collection.find({
+      'email': email,
+      'password': password
+    }).toList();
+
+    print('First document fetched: ${res.first['name']} - ${res.first['password']}');
+
+    if(res.first['name']!=null && res.first['password']!=null)
+    {
+      check=1;
+    } else {
+      check = 0;
+    }
+
+    await cleanupDatabase();
   }
 }

@@ -7,8 +7,6 @@ import 'package:recipcook/src/blocs/navigator_page/navigator_page_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'package:recipcook/src/ui/navigator_and_context/navigator_page/id/server.dart';
 import 'package:mongo_dart/mongo_dart.dart' as mongo;
 
 class AuthView extends StatefulWidget {
@@ -157,6 +155,21 @@ class _AuthState extends State<AuthView> {
         alignment: FractionalOffset.bottomCenter,
         child: TextButton(
           onPressed: () {
+            //if (_formKey.currentState!.validate()) {
+              var email = emailController.text;
+              var name = nameController.text;
+              var password = passwordController.text;
+              var cpass = cpassController.text;
+
+              //var rsp = await registerUser(email, password, cpass, name);
+              var rsp = connectData(email, password, cpass, name);
+
+              BlocProvider.of<NavigatorPageBloc>(context)
+                .add(NavigateToPageEvent(page: CurrentPage.login));
+
+            /*} else {
+              print(error);
+            }*/
             print(emailController);
             print(passwordController);
             BlocProvider.of<NavigatorPageBloc>(context)
@@ -178,15 +191,42 @@ class _AuthState extends State<AuthView> {
   }
 
   registerUser(String email, String password, String cpass, String name) {
-    connectData();
+    connectData(email, password, cpass, name);
   }
 
-  void connectData() async {
-    //var db = Db(defaultUri);
-    var db = await mongo.Db.create("mongodb+srv://userRoot:pwdRoot@cluster0.yhi0oy3.mongodb.net/Profile");
+  void connectData(String email, String password, String cpass, String name) async {
+    var db = await mongo.Db.create("mongodb+srv://test:test@cluster0.yhi0oy3.mongodb.net/Profile");
     await db.open();
+    print("****************success register ---------------------------------");
+    Future cleanupDatabase() async {
+      await db.close();
+    }
 
-    print("success ---------------------------------");
+    if (!db.masterConnection.serverCapabilities.supportsOpMsg) {
+      return;
+    }
+
+    var collectionName = 'insertOne';
+    await db.dropCollection(collectionName);
+      var collection = db.collection(collectionName);
+
+      var ret = await collection.insert(<String, dynamic>{
+        'name': name,
+        'email': email,
+        'password': password,
+        'cpass': cpass,
+      });
+
+      /*if (!ret.isSuccess) {
+        print('Error detected in record insertion');
+      }*/
+
+      var res = await collection.findOne();
+
+      print('Fetched ${res?['name']}');
+
+      await cleanupDatabase();
+    //await db.close();
   }
   /// Get from camera
   _getFromCamera() async {
