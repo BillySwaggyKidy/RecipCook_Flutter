@@ -9,6 +9,7 @@ import 'tab3/favorite.dart';
 
 class NavBar extends StatefulWidget {
   NavBar({required Key? key}) : super(key: key);
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
 
   @override
   State<StatefulWidget> createState() {
@@ -34,12 +35,13 @@ class _NavBar extends State<NavBar> {
       builder: (context, state) {
         selectedIndex = state.tabIndex;
         return Scaffold(
+            key: widget._key,
             drawer: Drawer(
               backgroundColor: const Color.fromARGB(255, 136, 199, 120),
               child: DrawerUser(),
             ),
             floatingActionButton: FloatingActionButton(
-                onPressed: () => {},
+                onPressed: () => {widget._key.currentState!.openDrawer()},
                 elevation: 0,
                 child: const Text("profile")),
             floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
