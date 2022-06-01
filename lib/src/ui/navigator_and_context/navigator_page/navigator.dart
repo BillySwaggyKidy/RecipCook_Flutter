@@ -15,7 +15,7 @@ class NavigatorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     BlocProvider.of<NavigatorPageBloc>(context)
-        .add(NavigateToPageEvent(page: CurrentPage.navbar));
+        .add(NavigateToPageEvent(page: CurrentPage.home));
     return BlocBuilder<NavigatorPageBloc, NavigatorPageState>(
       builder: (context, state) {
         switch (state.currentPage) {
