@@ -31,4 +31,19 @@ class ProfileProvider with ChangeNotifier {
       throw Exception(e);
     }
   }
+
+  Future<dynamic> fetchDataR(String login, String password, String name, String cpass) async {
+    try {
+      http.Response response = await http.post(Uri.parse('$host/api/profiles'));
+      if (response.statusCode == 200) {
+        return LoginItemModel.fromJson(json.decode(response.body));
+      } else {
+        // If that call was not successful, throw an error.
+        return false;
+      }
+    } catch (e) {
+      //rethrow;
+      throw Exception(e);
+    }
+  }
 }

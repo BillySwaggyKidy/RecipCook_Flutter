@@ -1,10 +1,15 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-// import 'package:birthdayapp/layout/all_layout.dart';
 import 'package:flutter/services.dart';
 import 'package:recipcook/src/ui/navigator_and_context/navigator_page/id/login.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:recipcook/src/blocs/navigator_page/navigator_page_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:recipcook/src/ui/navigator_and_context/navigator_page/id/server.dart';
+import 'package:mongo_dart/mongo_dart.dart' as mongo;
+
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -149,12 +154,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           var password = passwordController.text;
                           var cpass = cpassController.text;
 
-                          var rsp =
-                              await registerUser(email, password, cpass, name);
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => LoginScreen()));
+                          var rsp = await registerUser(email, password, cpass, name);
+
+                          BlocProvider.of<NavigatorPageBloc>(context)
+                            .add(NavigateToPageEvent(page: CurrentPage.login));
+
                         } else {
                           print(error);
                         }
@@ -217,8 +221,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 
-  registerUser(String email, String password, String cpass, String name) {}
+  registerUser(String email, String password, String cpass, String name) {
+    connectData();
+  }
 
+  void connectData() async {
+    //var db = Db(defaultUri);
+    var db = await mongo.Db.create("mongodb+srv://userRoot:pwdRoot@cluster0.yhi0oy3.mongodb.net/Profile");
+    await db.open();
+
+    print("success ---------------------------------");
+  }
   /// Get from camera
   _getFromCamera() async {
     PickedFile? pickedFile = await ImagePicker().getImage(

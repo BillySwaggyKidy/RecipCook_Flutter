@@ -4,6 +4,7 @@ import 'package:recipcook/src/blocs/all_blocs.dart';
 import 'package:recipcook/src/ui/navigator_and_context/navigator_page/home/home.dart';
 import 'package:recipcook/src/ui/navigator_and_context/navigator_page/id/login.dart';
 import 'package:recipcook/src/ui/navigator_and_context/navigator_page/id/register.dart';
+import 'package:recipcook/src/ui/navigator_and_context/navigator_page/id/signup.dart';
 import 'package:recipcook/src/ui/navigator_and_context/navigator_page/recipe_view/recipe_view.dart';
 import 'package:recipcook/src/ui/navigator_and_context/navigator_page/user_info/user_info.dart';
 import 'navbar/navbar.dart';
@@ -24,7 +25,8 @@ class NavigatorPage extends StatelessWidget {
           case CurrentPage.register:
             return RegisterScreen();
           case CurrentPage.login:
-            return LoginScreen();
+            // return Loginn();
+            return LoginDemo();
           case CurrentPage.navbar:
             return NavBar(key: key);
           case CurrentPage.recipeView:

@@ -15,4 +15,7 @@ class Provider {
 
   Future<dynamic> fetchLogin(String login, String password) =>
     profileItemProvider.fetchData(login, password);
+
+  Future<dynamic> fetchRegister(String login, String password, String name, String cpass) =>
+    profileItemProvider.fetchDataR(login, password, name, cpass);
 }

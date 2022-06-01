@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:birthdayapp/layout/all_layout.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:recipcook/src/blocs/navigator_page/navigator_page_bloc.dart';
@@ -14,7 +13,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
-  final usernameController = TextEditingController();
+  final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
   //final _storage = FlutterSecureStorage();
@@ -76,9 +75,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: TextFormField(
                       //validator: (String? val) => val!.isEmpty ? 'Please enter username' : null,
                       decoration: InputDecoration(
-                        labelText: "Username",
+                        labelText: "Email",
                       ),
-                      controller: usernameController,
+                      controller: emailController,
                     ),
                   ),
                   Container(
@@ -98,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
                       color: Colors.black,
                       onPressed: () {
-                        print(usernameController);
+                        print(emailController);
                         print(passwordController);
                         BlocProvider.of<NavigatorPageBloc>(context)
                               .add(NavigateToPageEvent(page: CurrentPage.navbar));
@@ -132,7 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     alignment: FractionalOffset.bottomCenter,
                     child: TextButton(
                       onPressed: () {
-                        print(usernameController);
+                        print(emailController);
                         print(passwordController);
                         BlocProvider.of<NavigatorPageBloc>(context)
                             .add(NavigateToPageEvent(page: CurrentPage.navbar));

@@ -3,6 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:recipcook/src/blocs/navigator_page/navigator_page_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mongo_dart/mongo_dart.dart' as mongo;
+
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -48,6 +50,7 @@ class HomePage extends StatelessWidget {
         alignment: FractionalOffset.bottomCenter,
         child: TextButton(
           onPressed: () {
+            connectData();
             BlocProvider.of<NavigatorPageBloc>(context)
                   .add(NavigateToPageEvent(page: CurrentPage.login));
           },
@@ -80,3 +83,13 @@ class Padding extends StatelessWidget {
     );
   }
 }
+
+void connectData() async {
+  //var db = Db(defaultUri);
+  //var db = await mongo.Db.create("mongodb+srv://test:test@cluster0.yhi0oy3.mongodb.net/Profile");
+  var db = await mongo.Db.create("mongodb+srv://userRoot:YRotVYGAQp465r0b@cluster0.yhi0oy3.mongodb.net/?retryWrites=true&w=majority");
+  await db.open();
+  print("****************success ---------------------------------");
+  await db.close();
+}
+

@@ -6,10 +6,10 @@ import '../status.dart';
 part 'login_items_state.dart';
 
 class LoginItemsEvent {
-  String username;
+  String email;
   String password;
   LoginItemsEvent({
-    required this.username,
+    required this.email,
     required this.password,
   });
 }
@@ -25,7 +25,7 @@ class ProfilItemsBloc extends Bloc<LoginItemsEvent, LoginItemsState> {
     try {
       final profilProvider = Provider();
       final profil =
-          await profilProvider.fetchLogin(event.username, event.password);
+          await profilProvider.fetchLogin(event.email, event.password);
       emit(
         state.copyWith(
           status: Status.success,
