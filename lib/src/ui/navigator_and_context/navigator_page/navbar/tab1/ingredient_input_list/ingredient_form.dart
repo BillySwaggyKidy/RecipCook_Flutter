@@ -19,7 +19,7 @@ class IngredientForm extends StatefulWidget {
 
 Future<List<dynamic>> readJson() async {
   final String response =
-      await rootBundle.loadString('json/ingredient_input_list.json');
+      await rootBundle.loadString('assets/json/ingredient_input_list.json');
   final data = await json.decode(response);
   return data;
 }

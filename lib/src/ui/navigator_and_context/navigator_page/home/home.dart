@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:recipcook/src/blocs/navigator_page/navigator_page_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mongo_dart/mongo_dart.dart' as mongo;
-
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,7 +11,7 @@ class HomePage extends StatelessWidget {
       Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('img/tab2-background.png'),
+            image: AssetImage('assets/image/tab2-background.jpg'),
             fit: BoxFit.fitHeight,
             alignment: FractionalOffset.topCenter,
           ),
@@ -28,7 +25,7 @@ class HomePage extends StatelessWidget {
         //margin: EdgeInsets.all(30.0),
         padding: const EdgeInsets.fromLTRB(80, 0, 70, 200),
         child: SvgPicture.asset(
-          'icons/app-cook-icon.svg',
+          'assets/icons/app-cook-icon.svg',
           width: 100.0,
           height: 100.0,
           color: Colors.black,
@@ -50,7 +47,6 @@ class HomePage extends StatelessWidget {
         alignment: FractionalOffset.bottomCenter,
         child: TextButton(
           onPressed: () {
-            connectData();
             BlocProvider.of<NavigatorPageBloc>(context)
                   .add(NavigateToPageEvent(page: CurrentPage.login));
           },
@@ -82,14 +78,5 @@ class Padding extends StatelessWidget {
       child: null,
     );
   }
-}
-
-void connectData() async {
-  //var db = Db(defaultUri);
-  var db = await mongo.Db.create("mongodb+srv://test:test@cluster0.yhi0oy3.mongodb.net/Profile");
-  //var db = await mongo.Db.create("mongodb+srv://userRoot:YRotVYGAQp465r0b@cluster0.yhi0oy3.mongodb.net/?retryWrites=true&w=majority");
-  await db.open();
-  print("****************success ---------------------------------");
-  await db.close();
 }
 

@@ -25,7 +25,7 @@ class _RecipeList extends State {
         Container(
           decoration: const BoxDecoration(
               image: DecorationImage(
-            image: AssetImage('img/tab2-background.png'),
+            image: AssetImage('assets/image/tab2-background.png'),
             fit: BoxFit.fill,
             alignment: FractionalOffset.topCenter,
           )),

@@ -51,7 +51,7 @@ class _NavBar extends State<NavBar> {
               items: [
                 BottomNavigationBarItem(
                   icon: SvgPicture.asset(
-                    "icons/cooking-pot-icon.svg",
+                    "assets/icons/cooking-pot-icon.svg",
                     height: 20,
                     width: 20,
                     color: Colors.white,
@@ -60,7 +60,7 @@ class _NavBar extends State<NavBar> {
                 ),
                 BottomNavigationBarItem(
                   icon: SvgPicture.asset(
-                    "icons/app-tab-icon-cook.svg",
+                    "assets/icons/app-tab-icon-cook.svg",
                     height: 20,
                     width: 20,
                     color: Colors.white,

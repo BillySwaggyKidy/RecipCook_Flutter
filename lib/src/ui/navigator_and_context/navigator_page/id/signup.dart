@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:recipcook/src/blocs/navigator_page/navigator_page_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mongo_dart/mongo_dart.dart' as mongo;
@@ -22,7 +21,7 @@ class _LoginDemoState extends State<LoginDemo> {
       Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('img/tab2-background.png'),
+            image: AssetImage('assets/image/tab2-background.png'),
             fit: BoxFit.fitHeight,
             alignment: FractionalOffset.topCenter,
           ),
@@ -92,34 +91,7 @@ class _LoginDemoState extends State<LoginDemo> {
                 controller: passwordController,
               ),
             ),
-            // FlatButton(
-            //   onPressed: (){
-            //     //TODO FORGOT PASSWORD SCREEN GOES HERE
-            //   },
-            //   child: Text(
-            //     'Forgot Password',
-            //     style: TextStyle(
-            //       color: Colors.blue,
-            //       fontSize: 15
-            //       ),
-            //   ),
-            // ),
-            // Container(
-            //   height: 50,
-            //   width: 250,
-            //   decoration: BoxDecoration(
-            //       color: Colors.blue, borderRadius: BorderRadius.circular(20)),
-            //   child: FlatButton(
-            //     onPressed: () {
-            //       BlocProvider.of<NavigatorPageBloc>(context)
-            //         .add(NavigateToPageEvent(page: CurrentPage.navbar));
-            //     },
-            //     child: const Text(
-            //       'Login',
-            //       style: TextStyle(color: Colors.white, fontSize: 25),
-            //     ),
-            //   ),
-            // ),
+
             const SizedBox(
               height: 200,
             ),
@@ -146,8 +118,7 @@ class _LoginDemoState extends State<LoginDemo> {
             var email = emailController.text;
             var password = passwordController.text;
             verifData(email, password);
-            print(emailController);
-            print(passwordController);
+
             if(check==0)
             {
               BlocProvider.of<NavigatorPageBloc>(context)
@@ -178,7 +149,6 @@ class _LoginDemoState extends State<LoginDemo> {
   void verifData(String email, String password) async {
     var db = await mongo.Db.create("mongodb+srv://test:test@cluster0.yhi0oy3.mongodb.net/Profile");
     await db.open();
-    print("****************success login ---------------------------------");
     Future cleanupDatabase() async {
       await db.close();
     }
@@ -196,15 +166,23 @@ class _LoginDemoState extends State<LoginDemo> {
       'password': password
     }).toList();
 
-    print('First document fetched: ${res.first['name']} - ${res.first['password']}');
+    print('First document fetched: ${res.first['email']} - ${res.first['password']}');
 
-    if(res.first['name']!=null && res.first['password']!=null)
+    if(res.first['email']!=null && res.first['password']!=null)
     {
       check=1;
     } else {
       check = 0;
     }
 
+    res.first['name'];
+    res.first['email'];
+    res.first['password'];
+    res.first['cpass'];
+    
+
     await cleanupDatabase();
   }
+
+  
 }

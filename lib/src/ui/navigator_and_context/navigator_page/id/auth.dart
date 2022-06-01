@@ -1,12 +1,10 @@
 import 'dart:io';
-
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:recipcook/src/blocs/navigator_page/navigator_page_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mongo_dart/mongo_dart.dart' as mongo;
 
 class AuthView extends StatefulWidget {
@@ -34,7 +32,7 @@ class _AuthState extends State<AuthView> {
       Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('img/tab2-background.png'),
+            image: AssetImage('assets/image/tab2-background.png'),
             fit: BoxFit.fitHeight,
             alignment: FractionalOffset.topCenter,
           ),
@@ -50,13 +48,26 @@ class _AuthState extends State<AuthView> {
               padding: const EdgeInsets.only(top: 60.0),
               child: Center(
                 child: ElevatedButton(
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                          const Color.fromRGBO(178, 255, 89, 1))),
+                  // style: ButtonStyle(
+                  //   backgroundColor: MaterialStateProperty.all<Color>(
+                  //     const Color.fromRGBO(178, 255, 89, 1))
+                  // ),
                   onPressed: () {
                     _getFromCamera();
+                    
                   },
-                  child: const Text("PICK FROM CAMERA"),
+                  //child: const Text("PICK FROM CAMERA"),
+                  child: Container(
+                    //margin: EdgeInsets.all(30.0),
+                    padding: const EdgeInsets.fromLTRB(80, 0, 70, 200),
+                    child: SvgPicture.asset(
+                      'assets/icons/capture.svg',
+                      width: 100.0,
+                      height: 100.0,
+                      color: Colors.black,
+                    ),
+                  ),
+                  
                 ),
                 
                 
@@ -210,12 +221,16 @@ class _AuthState extends State<AuthView> {
     await db.dropCollection(collectionName);
       var collection = db.collection(collectionName);
 
-      var ret = await collection.insert(<String, dynamic>{
-        'name': name,
-        'email': email,
-        'password': password,
-        'cpass': cpass,
-      });
+      var ret = await collection.insertMany(<Map<String, dynamic>>[
+        /*{'_id': 1, 'name': 'Tom', 'state': 'active', 'rating': 100, 'score': 5},
+        {'_id': 2, 'name': 'William', 'state': 'busy', 'rating': 80, 'score': 4},
+        {'_id': 3, 'name': 'Liz', 'state': 'on hold', 'rating': 70, 'score': 8},
+        {'_id': 4, 'name': 'George', 'state': 'active', 'rating': 95, 'score': 8},
+        {'_id': 5, 'name': 'Jim', 'state': 'idle', 'rating': 40, 'score': 3},
+        {'_id': 6, 'name': 'Laureen', 'state': 'busy', 'rating': 87, 'score': 8},
+        {'_id': 7, 'name': 'John', 'state': 'idle', 'rating': 72, 'score': 7},*/
+        {'name': name, 'email': email, 'password': password, 'cpass': cpass,},
+      ]);
 
       /*if (!ret.isSuccess) {
         print('Error detected in record insertion');

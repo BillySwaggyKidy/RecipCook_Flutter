@@ -21,7 +21,7 @@ class _Ingredient extends State {
         Container(
           decoration: const BoxDecoration(
               image: DecorationImage(
-            image: AssetImage('img/tab1-background.png'),
+            image: AssetImage('assets/image/tab1-background.png'),
             fit: BoxFit.fill,
             alignment: FractionalOffset.topCenter,
           )),

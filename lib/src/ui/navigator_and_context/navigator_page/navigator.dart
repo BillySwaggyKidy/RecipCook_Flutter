@@ -3,8 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipcook/src/blocs/all_blocs.dart';
 import 'package:recipcook/src/ui/navigator_and_context/navigator_page/home/home.dart';
 import 'package:recipcook/src/ui/navigator_and_context/navigator_page/id/auth.dart';
-import 'package:recipcook/src/ui/navigator_and_context/navigator_page/id/login.dart';
-import 'package:recipcook/src/ui/navigator_and_context/navigator_page/id/register.dart';
 import 'package:recipcook/src/ui/navigator_and_context/navigator_page/id/signup.dart';
 import 'package:recipcook/src/ui/navigator_and_context/navigator_page/recipe_view/recipe_view.dart';
 import 'package:recipcook/src/ui/navigator_and_context/navigator_page/user_info/user_info.dart';

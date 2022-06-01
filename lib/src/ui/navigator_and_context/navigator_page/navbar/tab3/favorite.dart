@@ -26,7 +26,7 @@ class _Favorite extends State {
         Container(
           decoration: const BoxDecoration(
               image: DecorationImage(
-            image: AssetImage('img/tab3-background.png'),
+            image: AssetImage('assets/image/tab3-background.png'),
             fit: BoxFit.fill,
             alignment: FractionalOffset.topCenter,
           )),
