@@ -5,14 +5,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:recipcook/src/blocs/navigator_page/navigator_page_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class Loginn extends StatefulWidget {
+class LoginScreen extends StatefulWidget {
   //static const routeName = '/Loginn';
 
   @override
-  State<Loginn> createState() => _LoginnScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginnScreenState extends State<Loginn> {
+class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
@@ -50,7 +50,8 @@ class _LoginnScreenState extends State<Loginn> {
                     ),
                   ),
                   Container(
-                    color: const Color.fromARGB(255, 0, 255, 0).withOpacity(0.3),
+                    color:
+                        const Color.fromARGB(255, 0, 255, 0).withOpacity(0.3),
                   ),
                   Text(
                     'Login',
@@ -108,17 +109,23 @@ class _LoginnScreenState extends State<Loginn> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text('Don\'t have an account yet ? Really', style: TextStyle(color: Colors.black,),),
-                    TextButton(
-                      onPressed: () {
-                        BlocProvider.of<NavigatorPageBloc>(context)
-                              .add(NavigateToPageEvent(page: CurrentPage.register));
-                      },
-                      child: const Text(
-                        'CREATE ONE',
-                        style: TextStyle(color: Color.fromARGB(255, 180, 60, 0)),
+                      const Text(
+                        'Don\'t have an account yet ? Really',
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
                       ),
-                    ),
+                      TextButton(
+                        onPressed: () {
+                          BlocProvider.of<NavigatorPageBloc>(context).add(
+                              NavigateToPageEvent(page: CurrentPage.register));
+                        },
+                        child: const Text(
+                          'CREATE ONE',
+                          style:
+                              TextStyle(color: Color.fromARGB(255, 180, 60, 0)),
+                        ),
+                      ),
                     ],
                   ),
                   Align(
@@ -128,7 +135,7 @@ class _LoginnScreenState extends State<Loginn> {
                         print(usernameController);
                         print(passwordController);
                         BlocProvider.of<NavigatorPageBloc>(context)
-                              .add(NavigateToPageEvent(page: CurrentPage.navbar));
+                            .add(NavigateToPageEvent(page: CurrentPage.navbar));
                       },
                       child: const Text(
                         'LOGIN',
@@ -144,7 +151,6 @@ class _LoginnScreenState extends State<Loginn> {
                   ),
                 ],
               ),
-              
             ),
           ),
         ),

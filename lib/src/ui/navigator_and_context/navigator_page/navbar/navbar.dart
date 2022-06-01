@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipcook/src/blocs/navbar/navbar_bloc.dart';
+import 'package:recipcook/src/ui/navigator_and_context/navigator_page/drawer_user/drawer_user.dart';
 import 'tab1/ingredient_view.dart';
 import 'tab2/recipe_list.dart';
 import 'tab3/favorite.dart';
@@ -33,6 +34,10 @@ class _NavBar extends State<NavBar> {
       builder: (context, state) {
         selectedIndex = state.tabIndex;
         return Scaffold(
+            drawer: Drawer(
+              backgroundColor: const Color.fromARGB(255, 136, 199, 120),
+              child: DrawerUser(),
+            ),
             floatingActionButton: FloatingActionButton(
                 onPressed: () => {},
                 elevation: 0,
